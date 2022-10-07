@@ -22,15 +22,15 @@ const claimAndRestakeAllWithSleep = () => {
     await new Promise(r => setTimeout(r, waitClaimMs))
     console.log('Restaking now at ' + new Date().toLocaleString())
     restakeAll()
-    mins = Number(mins + 1)
-    fs.writeFile('counter.txt', '' + mins, () => {
-        console.log('Updated mins now to ' + mins)
+    multiplier = Number(multiplier + 1)
+    fs.writeFile('counter.txt', '' + multiplier, () => {
+        console.log('Updated mins now to ' + multiplier)
     })
   })
 }
 
 var job = new CronJob(
-  '39 31 19 * * *',
+  '0 48 19 * * *',
   claimAndRestakeAllWithSleep,
   null,
   true
