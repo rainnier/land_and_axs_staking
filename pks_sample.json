@@ -1,0 +1,14 @@
+[
+    {
+        "pk":"<Rename this file to pks.json - YOUR_PK1 here - you can optionally use some preemptive obfuscation and then decoded using your function a(pk)>",
+        "name": "your_wallet_1_obfuscate"
+    },
+    {
+        "pk":"<YOUR_PK2 here - you can optionally use some preemptive obfuscation and then decoded using your function a(pk)>",
+        "name": "your_wallet_2_obfuscate"
+    },
+    {
+        "pk":"<YOUR_PK3 here - you can optionally use some preemptive obfuscation and then decoded using your function a(pk)>",
+        "name": "your_wallet_3_obfuscate"
+    }
+]
