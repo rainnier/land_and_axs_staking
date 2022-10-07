@@ -24,7 +24,7 @@ const claimAndRestakeAllWithSleep = () => {
     restakeAll()
     multiplier = Number(multiplier + 1)
     fs.writeFile('counter.txt', '' + multiplier, () => {
-        console.log('Updated mins now to ' + multiplier)
+        console.log('Updated multiplier now to ' + multiplier)
     })
   })
 }
