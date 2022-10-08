@@ -18,6 +18,6 @@ npx tsc
 2. Modify landPks_sample.json to contain your private keys and rename to landPks.json - (Remove 0x at the beginning of you private key. After that, default implementation needs your private key's last 15 characters removed and placed at the start. . [Look for a(pk) in the landIndex.js to understand better])
 3. Modify cron_axs_restake.js cron to your preferred time of claiming and restaking
 ```
-node .\cron_axs_restake.js
+node .\cron_land_claim_axs_stake_restake.js.js
 ```
 
