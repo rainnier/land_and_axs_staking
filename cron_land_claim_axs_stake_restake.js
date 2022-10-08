@@ -22,12 +22,12 @@ const claimStakeAndRestakeAllWithSleep = () => {
 
     console.log('Will wait for ' + (waitClaimToCompleteMs/1000) + ' seconds before staking land rewards')
     await new Promise(r => setTimeout(r, waitClaimToCompleteMs))
-    console.log('Claiming now at ' + new Date().toLocaleString())
+    console.log('Staking AXS land rewards now at ' + new Date().toLocaleString())
     stake()
 
     console.log('Will wait for ' + (waitStakeToCompleteMs/1000) + ' seconds before restaking')
     await new Promise(r => setTimeout(r, waitStakeToCompleteMs))
-    console.log('Restaking now at ' + new Date().toLocaleString())
+    console.log('Restaking AXS now at ' + new Date().toLocaleString())
     restakeAll()
 
     multiplier = Number(multiplier + 1)
@@ -38,7 +38,7 @@ const claimStakeAndRestakeAllWithSleep = () => {
 }
 
 var job = new CronJob(
-  '0 48 19 * * *',
+  '14 48 19 * * *',
   claimStakeAndRestakeAllWithSleep,
   null,
   true
