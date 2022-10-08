@@ -1,5 +1,5 @@
 const Web3 = require('web3')
-var landAbi = require('./land_staking_abi.json')
+var landAbi = require('./land_rewards_claim_and_stake_abi.json')
 const landPks = require('./landPks.json')
 var fs = require('fs')
 

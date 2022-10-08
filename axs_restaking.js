@@ -1,5 +1,5 @@
 const Web3 = require('web3')
-var abi = require('./axs_staking_abi.json')
+var abi = require('./axs_restaking_abi.json')
 const pks = require('./pks.json')
 var fs = require('fs')
 

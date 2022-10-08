@@ -1,0 +1,20 @@
+[
+    {
+        "constant": false,
+        "inputs": [{
+            "type": "uint256",
+            "name": "myNumber"
+        }],
+        "name": "stake",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "_success",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]

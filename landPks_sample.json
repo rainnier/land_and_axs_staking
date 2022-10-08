@@ -1,6 +1,7 @@
 [
     {
         "pk":"<Rename this file to lanPks.json - YOUR_PK1 here of your land staking - you can optionally use some preemptive obfuscation and then decoded using your function a(pk)>",
-        "name": "your_wallet_1_obfuscate"
+        "address": "your_wallet_1_address_starting_with_0x",
+        "name": "your_wallet_1_name"
     }
 ]
