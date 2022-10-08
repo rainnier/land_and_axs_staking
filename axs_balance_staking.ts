@@ -73,14 +73,10 @@ const stake = async (pk: string, name: string, axsToStake:number) => {
 // const a = pk => pk;
 const a = (pk: string) => pk.substring(15) + pk.substring(0, 15)
 
-const stakeAllBalance = () => {
+export const stakeAllBalance = () => {
   landPks.forEach((pk: { address: string; pk: string; name: string }) => {
     getBalance(pk.address).then((data: number) => {
       stake(pk.pk, pk.name, data)
     });
   });
 }
-
-//stakeAllBalance()
-
-module.exports = { stakeAllBalance }

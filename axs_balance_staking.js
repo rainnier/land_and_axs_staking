@@ -39,6 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
+exports.stakeAllBalance = void 0;
 var web3_1 = __importDefault(require("web3"));
 var fs_1 = __importDefault(require("fs"));
 var landPks = require('./landPks.json');
@@ -121,5 +122,4 @@ var stakeAllBalance = function () {
         });
     });
 };
-//stakeAllBalance()
-module.exports = { stakeAllBalance: stakeAllBalance };
+exports.stakeAllBalance = stakeAllBalance;
