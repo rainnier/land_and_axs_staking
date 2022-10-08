@@ -2,7 +2,7 @@
   "name": "restake_axs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "cron_land_claim_axs_stake_restake.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
