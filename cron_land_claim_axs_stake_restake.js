@@ -52,5 +52,6 @@ var job = new CronJob(
   '0 15 22 * * *',
   claimStakeAndRestakeAllWithSleep,
   null,
-  true
+  true,
+  'Asia/Manila'
 )
