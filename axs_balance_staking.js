@@ -123,4 +123,3 @@ var stakeAllBalance = function () {
     });
 };
 exports.stakeAllBalance = stakeAllBalance;
-(0, exports.stakeAllBalance)();
