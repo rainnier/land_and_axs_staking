@@ -30,10 +30,10 @@ const restake = async (pk, name) => {
     )
     fs.appendFileSync(
         logFile,
-      `${new Date().toLocaleString()} - Restake successful [${name}]: https://explorer.roninchain.com/tx/${restakeReceipt.transactionHash}\n`
+      `${new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' })} - Restake successful [${name}]: https://explorer.roninchain.com/tx/${restakeReceipt.transactionHash}\n`
     )
   } catch (e) {
-    fs.appendFileSync(logFile, `${new Date().toLocaleString()} - *** Restake unsuccessful [${name}]\n`)
+    fs.appendFileSync(logFile, `${new Date('en-US', { timeZone: 'Asia/Manila' }).toLocaleString()} - *** Restake unsuccessful [${name}]\n`)
   }
 }
 

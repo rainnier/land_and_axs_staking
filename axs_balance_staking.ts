@@ -62,10 +62,10 @@ const stake = async (pk: string, name: string, axsToStake:number) => {
     )
     fs.appendFileSync(
         logFile,
-      `${new Date().toLocaleString()} - Stake of land rewards successful of ${axsToStake/(10**AXS_DECIMAL)} [${name}]: https://explorer.roninchain.com/tx/${stakeReceipt.transactionHash}\n`
+      `${new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' })} - Stake of land rewards successful of ${axsToStake/(10**AXS_DECIMAL)} [${name}]: https://explorer.roninchain.com/tx/${stakeReceipt.transactionHash}\n`
     )
   } catch (e) {
-    fs.appendFileSync(logFile, `${new Date().toLocaleString()} - *** Stake of land rewards unsuccessful of ${axsToStake/(10**AXS_DECIMAL)} [${name}]\n`)
+    fs.appendFileSync(logFile, `${new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' })} - *** Stake of land rewards unsuccessful of ${axsToStake/(10**AXS_DECIMAL)} [${name}]\n`)
   }
 }
 

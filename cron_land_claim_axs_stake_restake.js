@@ -5,20 +5,20 @@ const { claimAll } = require('./land_rewards_claim')
 const { stakeAllBalance } = require('./axs_balance_staking')
 
 var multiplier = 0
-var secondsWait = 20
+var secondsWait = 600
 var ms = 0
 
 const claimStakeAndRestakeAllWithSleep = () => {
   fs.readFile('counter.txt', 'utf8', async (err, data) => {
-    console.log('Triggered cron at ' + new Date().toLocaleString())
+    console.log('Triggered cron at ' + new Date('en-US', { timeZone: 'Asia/Manila' }).toLocaleString())
     multiplier = data
     ms = multiplier * (1000 * secondsWait)
-    var waitClaimToCompleteMs = 10000
-    var waitStakeToCompleteMs = 10000
+    var waitClaimToCompleteMs = 5*60*1000
+    var waitStakeToCompleteMs = 5*60*1000
 
     console.log('Will wait for ' + ms / 1000 + ' seconds before claiming')
     await new Promise(r => setTimeout(r, ms))
-    console.log('Claiming now at ' + new Date().toLocaleString())
+    console.log('Claiming now at ' + new Date('en-US', { timeZone: 'Asia/Manila' }).toLocaleString())
     claimAll()
 
     console.log(
@@ -28,7 +28,7 @@ const claimStakeAndRestakeAllWithSleep = () => {
     )
     await new Promise(r => setTimeout(r, waitClaimToCompleteMs))
     console.log(
-      'Staking AXS land rewards now at ' + new Date().toLocaleString()
+      'Staking AXS land rewards now at ' + new Date('en-US', { timeZone: 'Asia/Manila' }).toLocaleString()
     )
     stakeAllBalance()
 
@@ -38,7 +38,7 @@ const claimStakeAndRestakeAllWithSleep = () => {
         ' seconds before restaking'
     )
     await new Promise(r => setTimeout(r, waitStakeToCompleteMs))
-    console.log('Restaking AXS now at ' + new Date().toLocaleString())
+    console.log('Restaking AXS now at ' + new Date('en-US', { timeZone: 'Asia/Manila' }).toLocaleString())
     restakeAll()
 
     multiplier = Number(multiplier + 1)
@@ -49,7 +49,7 @@ const claimStakeAndRestakeAllWithSleep = () => {
 }
 
 var job = new CronJob(
-  '14 48 19 * * *',
+  '0 0 21 * * *',
   claimStakeAndRestakeAllWithSleep,
   null,
   true

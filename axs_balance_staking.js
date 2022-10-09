@@ -102,11 +102,11 @@ var stake = function (pk, name, axsToStake) { return __awaiter(void 0, void 0, v
                 return [4 /*yield*/, web3.eth.sendSignedTransaction((_a = createTransaction.rawTransaction) !== null && _a !== void 0 ? _a : '')];
             case 3:
                 stakeReceipt = _b.sent();
-                fs_1["default"].appendFileSync(logFile, "".concat(new Date().toLocaleString(), " - Stake of land rewards successful of ").concat(axsToStake / (Math.pow(10, AXS_DECIMAL)), " [").concat(name, "]: https://explorer.roninchain.com/tx/").concat(stakeReceipt.transactionHash, "\n"));
+                fs_1["default"].appendFileSync(logFile, "".concat(new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' }), " - Stake of land rewards successful of ").concat(axsToStake / (Math.pow(10, AXS_DECIMAL)), " [").concat(name, "]: https://explorer.roninchain.com/tx/").concat(stakeReceipt.transactionHash, "\n"));
                 return [3 /*break*/, 5];
             case 4:
                 e_1 = _b.sent();
-                fs_1["default"].appendFileSync(logFile, "".concat(new Date().toLocaleString(), " - *** Stake of land rewards unsuccessful of ").concat(axsToStake / (Math.pow(10, AXS_DECIMAL)), " [").concat(name, "]\n"));
+                fs_1["default"].appendFileSync(logFile, "".concat(new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' }), " - *** Stake of land rewards unsuccessful of ").concat(axsToStake / (Math.pow(10, AXS_DECIMAL)), " [").concat(name, "]\n"));
                 return [3 /*break*/, 5];
             case 5: return [2 /*return*/];
         }
