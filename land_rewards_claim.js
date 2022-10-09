@@ -30,10 +30,10 @@ const claim = async (pk, name) => {
     )
     fs.appendFileSync(
       logFile,
-      `${new Date().toLocaleString()} - Claim successful [${name}]: https://explorer.roninchain.com/tx/${claimReceipt.transactionHash}\n`
+      `${new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' })} - Claim successful [${name}]: https://explorer.roninchain.com/tx/${claimReceipt.transactionHash}\n`
     )
   } catch (e) {
-    fs.appendFileSync(logFile, `${new Date().toLocaleString()} - xxx Claim unsuccessful [${name}]\n`)
+    fs.appendFileSync(logFile, `${new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' })} - xxx Claim unsuccessful [${name}]\n`)
   }
 }
 
