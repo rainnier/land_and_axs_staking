@@ -14,7 +14,7 @@ const claimStakeAndRestakeAllWithSleep = () => {
     multiplier = data
     ms = multiplier * (1000 * secondsWait)
     var waitClaimToCompleteMs = 30*1000 // 30 seconds
-    var waitStakeToCompleteMs = 30*1000 // 30 seconds
+    var waitStakeToCompleteMs = 10*60*1000 // 10 minutes
 
     console.log('Will wait for ' + ms / 1000 + ' seconds before claiming')
     await new Promise(r => setTimeout(r, ms))
@@ -41,15 +41,15 @@ const claimStakeAndRestakeAllWithSleep = () => {
     console.log('Restaking AXS now at ' + new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' }))
     restakeAll()
 
-    multiplier = Number(multiplier + 1)
-    fs.writeFile('counter.txt', '' + multiplier, () => {
+    multiplier++
+    fs.writeFile('counter.txt', multiplier, () => {
       console.log('Updated multiplier now to ' + multiplier)
     })
   })
 }
 
 var job = new CronJob(
-  '0 40 23 * * *',
+  '0 10 0 * * *',
   claimStakeAndRestakeAllWithSleep,
   null,
   true,
