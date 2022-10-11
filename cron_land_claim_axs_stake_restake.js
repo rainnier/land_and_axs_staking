@@ -42,7 +42,7 @@ const claimStakeAndRestakeAllWithSleep = () => {
     restakeAll()
 
     multiplier++
-    fs.writeFile('counter.txt', multiplier, () => {
+    fs.writeFile('counter.txt', '' + multiplier, () => {
       console.log('Updated multiplier now to ' + multiplier)
     })
   })
