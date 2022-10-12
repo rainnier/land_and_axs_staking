@@ -5,7 +5,7 @@ const { claimAll } = require('./land_rewards_claim')
 const { stakeAllBalance } = require('./axs_balance_staking')
 
 var multiplier = 0
-var secondsWait = 600 // 10 minutes
+var secondsWait = 1200 // 20 minutes
 var ms = 0
 
 const claimStakeAndRestakeAllWithSleep = () => {
@@ -14,7 +14,7 @@ const claimStakeAndRestakeAllWithSleep = () => {
     multiplier = data
     ms = multiplier * (1000 * secondsWait)
     var waitClaimToCompleteMs = 30*1000 // 30 seconds
-    var waitStakeToCompleteMs = 10*60*1000 // 10 minutes
+    var waitStakeToCompleteMs = 20*60*1000 // 20 minutes
 
     console.log('Will wait for ' + ms / 1000 + ' seconds before claiming')
     await new Promise(r => setTimeout(r, ms))
@@ -49,7 +49,7 @@ const claimStakeAndRestakeAllWithSleep = () => {
 }
 
 var job = new CronJob(
-  '0 10 0 * * *',
+  '0 20 1 * * *',
   claimStakeAndRestakeAllWithSleep,
   null,
   true,
