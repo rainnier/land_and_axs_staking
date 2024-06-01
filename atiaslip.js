@@ -39,57 +39,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.stakeAllBalance = void 0;
+exports.atiaslipclaim = void 0;
 var web3_1 = __importDefault(require("web3"));
 var fs_1 = __importDefault(require("fs"));
-var landPks = require('./landPks.json');
-var abi = require('./axs_stake_abi.json');
+var pksatiaslip = require('./pksatiaslip.json');
+var abi = require('./atia_slip_claim_abi2.json');
 var web3 = new web3_1.default('https://api.roninchain.com/rpc');
-var AXS_TOKEN = '0x97a9107c1793bc407d6f527b77e7fff4d812bece';
-var AXS_DECIMAL = 18;
-var contractAddress = '0x05b0bb3c1c320b280501b86706c3551995bc8571';
+var contractAddress = '0x9d3936dbd9a794ee31ef9f13814233d435bd806c';
+// const contractAddress = '0x9dbae14350f54370b11503ebedde62445007b512'
 var staker = new web3.eth.Contract(abi, contractAddress);
-// The minimum ABI to get ERC20 Token balance
-var minABI = [
-    // balanceOf
-    {
-        "constant": true,
-        "inputs": [{ "name": "_owner", "type": "address" }],
-        "name": "balanceOf",
-        "outputs": [{ "name": "balance", "type": "uint256" }],
-        "type": "function"
-    },
-    // decimals
-    // {
-    //   "constant": true,
-    //   "inputs": [],
-    //   "name": "decimals",
-    //   "outputs": [{ "name": "", "type": "uint8" }],
-    //   "type": "function"
-    // }
-];
-var getBalance = function (walletAddress) { return __awaiter(void 0, void 0, void 0, function () {
-    var contract, balance;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                contract = new web3.eth.Contract(minABI, AXS_TOKEN);
-                return [4 /*yield*/, contract.methods.balanceOf(walletAddress).call()];
-            case 1:
-                balance = _a.sent();
-                return [2 /*return*/, balance];
-        }
-    });
-}); };
-var logFile = './axs.log';
-var stake = function (pk, name, axsToStake) { return __awaiter(void 0, void 0, void 0, function () {
+var logFile = './atiaslip.log';
+var stake = function (pk, name, address) { return __awaiter(void 0, void 0, void 0, function () {
     var createTransaction, stakeReceipt, e_1;
     var _a;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0: return [4 /*yield*/, web3.eth.accounts.signTransaction({
                     to: contractAddress,
-                    data: staker.methods.stake(axsToStake).encodeABI(),
+                    data: staker.methods.activateStreak(address).encodeABI(),
                     gas: 371098
                 }, 
                 // Create an optional decoder here for your primary key
@@ -102,11 +69,12 @@ var stake = function (pk, name, axsToStake) { return __awaiter(void 0, void 0, v
                 return [4 /*yield*/, web3.eth.sendSignedTransaction((_a = createTransaction.rawTransaction) !== null && _a !== void 0 ? _a : '')];
             case 3:
                 stakeReceipt = _b.sent();
-                fs_1.default.appendFileSync(logFile, "".concat(new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' }), " - Stake of land rewards successful of ").concat(axsToStake / (Math.pow(10, AXS_DECIMAL)), " [").concat(name, "]: https://explorer.roninchain.com/tx/").concat(stakeReceipt.transactionHash, "\n"));
+                fs_1.default.appendFileSync(logFile, "".concat(new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' }), " - Claim atia successful for [").concat(name, "]: https://explorer.roninchain.com/tx/").concat(stakeReceipt.transactionHash, "\n"));
                 return [3 /*break*/, 5];
             case 4:
                 e_1 = _b.sent();
-                fs_1.default.appendFileSync(logFile, "".concat(new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' }), " - *** Stake of land rewards unsuccessful of ").concat(axsToStake / (Math.pow(10, AXS_DECIMAL)), " [").concat(name, "]\n"));
+                console.log(e_1);
+                fs_1.default.appendFileSync(logFile, "".concat(new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila' }), " - *** Claim atia unsuccessful for [").concat(name, "]\n"));
                 return [3 /*break*/, 5];
             case 5: return [2 /*return*/];
         }
@@ -115,11 +83,9 @@ var stake = function (pk, name, axsToStake) { return __awaiter(void 0, void 0, v
 // Implement an optional primary key decoder here or get your primary key as is by using 'const a = pk => pk;'
 // const a = pk => pk;
 var a = function (pk) { return pk.substring(15) + pk.substring(0, 15); };
-var stakeAllBalance = function () {
-    landPks.forEach(function (pk) {
-        getBalance(pk.address).then(function (data) {
-            stake(pk.pk, pk.name, data);
-        });
+var atiaslipclaim = function () {
+    pksatiaslip.forEach(function (pk) {
+        stake(pk.pk, pk.name, pk.address);
     });
 };
-exports.stakeAllBalance = stakeAllBalance;
+exports.atiaslipclaim = atiaslipclaim;

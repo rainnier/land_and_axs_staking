@@ -68,7 +68,7 @@ const claimStakeAndRestakeAllWithSleep = () => {
 }
 
 var job = new CronJob(
-  '0 30 3 * * *',
+  '0 21 14 * * *',
   claimStakeAndRestakeAllWithSleep,
   null,
   true,
